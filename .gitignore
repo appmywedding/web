@@ -1,4 +1,5 @@
 *.iml
+*.pack
 .gradle
 /local.properties
 .idea
@@ -20,5 +21,6 @@ amplify/backend/awscloudformation
 build/
 dist/
 node_modules/
+.next
 aws-exports.js
 app/src/main/res/raw/awsconfiguration.json
