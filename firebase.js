@@ -32,7 +32,6 @@ export const loginWithEmailAndPassword = async (email, password) => {
     try {
         await auth.signInWithEmailAndPassword(email, password);
     } catch (err) {
-        console.log(err)
         alert('error login');
     }
 }
@@ -48,11 +47,10 @@ export const registerWithEmailAndPassword = async (name, email, password) => {
             email,
         });
     } catch (err) {
-        console.log(err);
         alert(err);
     }
 };
 
-export const logout = () => {
-    auth.signOut();
-};
+export const logout = async () => {
+    await auth.signOut()
+}

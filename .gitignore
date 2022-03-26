@@ -24,3 +24,4 @@ node_modules/
 .next
 aws-exports.js
 app/src/main/res/raw/awsconfiguration.json
+.next/cache/
