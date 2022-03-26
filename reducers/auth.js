@@ -7,7 +7,6 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER:
-            debugger;
             return action.user;
         case CLEAR_USER:
             return null;

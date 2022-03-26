@@ -4,6 +4,7 @@ import { loginWithEmailAndPassword, registerWithEmailAndPassword } from '../fire
 import { setUser } from '../actions/auth';
 import { auth } from '../firebase';
 import Router from 'next/router';
+import axios from 'axios';
 
 
 export default function () {
@@ -23,12 +24,28 @@ export default function () {
         setPassword(event.target.value);
     }
 
+    const setInterceptor = (user) => {
+        axios.interceptors.request.use(
+            (req) => {
+                debugger;
+                if (!req.data) {
+                    req.data = {}
+                }
+                req.data.auth = user;
+                return req;
+            },
+            (err) => {
+                debugger;
+                return Promise.reject(err);
+            }
+        );
+    }
+
     async function checkAuth() {
         auth?.onAuthStateChanged(async (user) => {
-            debugger;
             if (user) {
-                debugger;
                 dispatch(setUser(user));
+                setInterceptor(user);
                 Router.push('/home')
             }
         });
