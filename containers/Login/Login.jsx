@@ -29,12 +29,15 @@ export default function Login() {
 
     const setInterceptor = (user) => {
         axios.interceptors.request.use(
-            (req) => {
-                if (!req.data) {
-                    req.data = {}
+            (config) => {
+                if (!user) {
+                    return config;
                 }
-                req.data.auth = user;
-                return req;
+                if (!config.headers) {
+                    config.headers = {};
+                }
+                config.headers.uid = user.uid;
+                return config;
             },
             (err) => {
                 return Promise.reject(err);
