@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../firebase';
 import Router from 'next/router';
 import axios from 'axios';
+import InvitedRow from '../../components/InvitedRow';
+import Loading from '../../components/Loading';
 import * as actions from '../../actions/invited';
 
 export default function Home() {
@@ -17,7 +19,7 @@ export default function Home() {
     }
 
     useEffect(async () => {
-        axios.post('http://localhost:3001/invites/add')
+        axios.get('http://localhost:3001/invites/getAll')
             .then((response) => {
                 dispatch(actions.setInvited(response.data));
             }, (error) => {
@@ -26,28 +28,27 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center min-h-screen py-2">
+        <div className="flex flex-col items-center min-h-screen py-2 bg-slate-50">
             <Head>
                 <title>My Wedding</title>
             </Head>
-            <h1 className="mt-3 text-4xl cursor-pointer underline">
+            <h1 className="mt-3 text-4xl cursor-pointer underline font-varelaround">
                 My Wedding
             </h1>
-            <div>
-                <div className = "flex flex-col items-center">
-                    <h3 className='p-5'>
-                    {invited[0]?.name} : {invited[0]?.number}
-                    </h3>
-                    <h3 className='p-5'>
-                    {invited[1]?.name} : {invited[1]?.number}
-                    </h3>
-                    <h3 className='p-5'>
-                    {invited[2]?.name} : {invited[2]?.number}
-                    </h3>
-                    <h3 className='p-5'>
-                    {invited[3]?.name} : {invited[3]?.number}
-                    </h3>
+            {invited ?
+                <div className="flex flex-col items-center">
+                    {invited.map((person) => {
+                        return (
+                            <div className='p-2'>
+                                <InvitedRow name={person.name} number={person.number} />
+                            </div>
+                        )
+                    }
+                    )}
                 </div>
+                : <Loading />}
+            <div className='cursor-pointer'>
+                Add
             </div>
             <div className="absolute left-10 bottom-10" onClick={onLogout}>
                 Logout

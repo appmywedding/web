@@ -6,6 +6,9 @@ module.exports = {
     './containers/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      'varelaround': ['VarelaRound']
+    },
     extend: {},
   },
   plugins: [],
