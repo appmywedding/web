@@ -18,6 +18,25 @@ export default function Home() {
         Router.push('login');
     }
 
+    const addInvited = async () => {
+        axios.post('http://localhost:3001/invites/add', {
+            people: [{
+                name: 'Orel1',
+                number: '0543056286'
+            }]
+        })
+            .then((response) => {
+                debugger;
+                let newInvited = [...invited];
+                for (let i = 0; i < response.data.length; i += 1) {
+                    newInvited.push(response.data[i]);
+                }
+                dispatch(actions.setInvited(newInvited));
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
     useEffect(async () => {
         axios.get('http://localhost:3001/invites/getAll')
             .then((response) => {
@@ -47,7 +66,7 @@ export default function Home() {
                     )}
                 </div>
                 : <Loading />}
-            <div className='cursor-pointer'>
+            <div className='cursor-pointer' onClick={addInvited}>
                 Add
             </div>
             <div className="absolute left-10 bottom-10" onClick={onLogout}>
