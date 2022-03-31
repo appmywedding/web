@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-export default function InvitedRow({ name, number, onDelete }) {
+export default function InvitedRow({ invited, onDelete }) {
     return (
         <div className='flex flex-row items-center'>
             <div className='flex flex-row items-center font-varelaround shadow-xl p-3 bg-white rounded w-48'>
-                {name}: {number}
+                {invited.name}: {invited.number}
             </div>
-            <div className="flex center cursor-pointer hover:shadow-lg rounded-full p-2 h-8 w-8">
+            <div className="flex center cursor-pointer hover:shadow-lg rounded-full p-2 h-8 w-8" onClick={() => { onDelete(invited) }}>
                 <FontAwesomeIcon icon={faTrashCan} />
             </div>
         </div>
@@ -17,13 +17,10 @@ export default function InvitedRow({ name, number, onDelete }) {
 }
 
 InvitedRow.defaultProps = {
-    name: 'Orel',
-    number: '0543056286',
-    onDelete: (id) => { },
+    onDelete: () => { },
 };
 
 InvitedRow.propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.string,
+    invited: PropTypes.object,
     onDelete: PropTypes.func,
 };

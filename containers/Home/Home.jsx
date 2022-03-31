@@ -21,16 +21,28 @@ export default function Home() {
     const addInvited = async () => {
         axios.post('http://localhost:3001/invites/add', {
             people: [{
-                name: 'Orel1',
+                name: 'Orel123',
                 number: '0543056286'
             }]
         })
             .then((response) => {
-                debugger;
                 let newInvited = [...invited];
                 for (let i = 0; i < response.data.length; i += 1) {
                     newInvited.push(response.data[i]);
                 }
+                dispatch(actions.setInvited(newInvited));
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    const removeInvited = async (invitedToRemove) => {
+        axios.post('http://localhost:3001/invites/remove', {
+            people: Array.isArray(invitedToRemove) ? invitedToRemove : [{ ...invitedToRemove }],
+        })
+            .then((response) => {
+                let removedInvitedIDs = response.data.map((removedInvited) => removedInvited.id);
+                let newInvited = invited.filter((invited) => !removedInvitedIDs.includes(invited.id));
                 dispatch(actions.setInvited(newInvited));
             }, (error) => {
                 console.log(error);
@@ -59,7 +71,7 @@ export default function Home() {
                     {invited.map((person) => {
                         return (
                             <div className='p-2'>
-                                <InvitedRow name={person.name} number={person.number} />
+                                <InvitedRow invited={person} onDelete={removeInvited} />
                             </div>
                         )
                     }
