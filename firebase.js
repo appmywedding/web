@@ -31,8 +31,9 @@ export default function init() {
 export const loginWithEmailAndPassword = async (email, password) => {
     try {
         await auth.signInWithEmailAndPassword(email, password);
+        return { ok: true };
     } catch (err) {
-        alert('error login');
+        return { ok: false, error: err };
     }
 }
 

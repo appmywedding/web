@@ -9,7 +9,14 @@ module.exports = {
     fontFamily: {
       'varelaround': ['VarelaRound']
     },
+    neumorphismColor: {
+      white: {
+        100: '#FFFFFF',
+        200: '#F3F3F3',
+        300: '#EAEBEF',
+      },
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwindcss-neumorphism')],
 }

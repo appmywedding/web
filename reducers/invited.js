@@ -4,10 +4,10 @@ const initialState = {
     invited: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const invitedReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_INVITED:
-            return {...state, invited: action.invited};
+            return { ...state, invited: action.invited };
         case CLEAR_INVITED:
             return null;
         default:
@@ -15,4 +15,4 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export default authReducer;
+export default invitedReducer;

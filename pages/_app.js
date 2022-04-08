@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <FirebaseProvider>
-        <Component {...pageProps} />
+        <div className='font-varelaround'>
+          <Component {...pageProps} />
+        </div>
       </FirebaseProvider>
     </Provider>
   )
