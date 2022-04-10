@@ -15,7 +15,7 @@ export default function Items() {
     useEffect(() => {
         if (loadItems) return;
         setLoadItems(true);
-        axios.get(`${baseURL}/items/getAll`)
+        axios.get(`${baseURL}/user/items/getAll`)
             .then((response) => {
                 setLoadItems(false);
                 dispatch(actions.setItems(response.data));

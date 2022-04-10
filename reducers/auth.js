@@ -1,4 +1,4 @@
-import { SET_USER, CLEAR_USER } from '../actions/auth';
+import { LOGIN, LOGOUT } from '../actions/auth';
 
 const initialState = {
     user: null,
@@ -6,10 +6,10 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USER:
+        case LOGIN:
             action.user.isAdmin = action.user.role === 'admin';
-            return {...state, user: action.user};
-        case CLEAR_USER:
+            return { ...state, user: action.user };
+        case LOGOUT:
             return null;
         default:
             return state;

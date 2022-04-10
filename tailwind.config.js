@@ -7,7 +7,13 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'varelaround': ['VarelaRound']
+      'varelaround': ['VarelaRound'],
+    },
+    extend: {
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        'semiwhite': '0 0 20px 4px rgba(193, 193, 193, 0.78)',
+      },
     },
     neumorphismColor: {
       white: {
@@ -16,7 +22,6 @@ module.exports = {
         300: '#EAEBEF',
       },
     },
-    extend: {},
   },
   plugins: [require('tailwindcss-neumorphism')],
 }

@@ -2,7 +2,10 @@
 import * as actions from '../actions/items';
 
 const initialState = {
-    items: null,
+    userItems: {},
+    dj: [],
+    dresses: [],
+    halls: [],
 };
 
 function jsonConcat(j1, j2) {
@@ -14,10 +17,10 @@ function jsonConcat(j1, j2) {
 
 const itemsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.SET_ITEMS:
-            return { ...state, items: action.items };
+        case actions.ADD_USER_ITEMS:
+            return { ...state, userItems: jsonConcat(state.userItems, action.items) };
         case actions.ADD_ITEMS:
-            return { ...state, items: jsonConcat(state.items, action.items) };
+
         case actions.CLEAR_ITEMS:
             return null;
         default:

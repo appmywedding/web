@@ -1,20 +1,32 @@
 import React from 'react';
 import Head from 'next/head'
-import { logout } from '../../firebase';
+import { logout as logoutFirebase } from '../../firebase';
 import Router from 'next/router';
 import Invited from '../../components/Invited';
-import Items from '../../components/items';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../actions/auth';
 
 export default function Home() {
 
-    const hiddenFileInput = React.useRef(null);
-    const selectFile = () => hiddenFileInput.current.click();
+    const dispatch = useDispatch();
 
     const onLogout = async () => {
-        await logout();
+        await logoutFirebase();
+        dispatch(logout())
         Router.push('login');
-    }
+    };
+
+    const onSelectDJ = () => {
+        Router.push('select/dj');
+    };
+
+    const onSelectDress = () => {
+        Router.push('select/dress');
+    };
+
+    const onSelectHall = () => {
+        Router.push('select/hall');
+    };
 
     return (
         <div className="flex flex-row items-top min-h-screen py-2 bg-slate-50">
@@ -27,16 +39,19 @@ export default function Home() {
                 </h1>
                 <Invited />
             </div>
-            <Items />
-            <input
-                type="file"
-                ref={hiddenFileInput}
-                // onChange={handleFileSelect}
-                style={{ display: 'none' }}
-            />
-            <div className="absolute left-10 bottom-10" onClick={onLogout}>
+            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectHall}>
+                Select your hall
+            </div>
+            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectDress}>
+                Select your dress
+            </div>
+            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectDJ}>
+                Select your dj
+            </div>
+            {/* <Items /> */}
+            <div className="absolute left-10 bottom-10 cursor-pointer" onClick={onLogout}>
                 Logout
             </div>
-        </div>
+        </div >
     )
 }

@@ -5,7 +5,7 @@ import PagesWrapper from '../../../containers/PagesWrapper';
 export default function AddDJ() {
     return (
         <PagesWrapper>
-            <AddItem name='dj' />
+            <AddItem type='dj' />
         </PagesWrapper>
     )
 }

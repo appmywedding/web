@@ -1,6 +1,6 @@
-export const SET_USER = 'SET_USER';
-export const CLEAR_USER = 'CLEAR_USER';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
-export const setUser = (user) => ({ type: SET_USER, user });
+export const login = (user) => ({ type: LOGIN, user });
 
-export const clearUser = () => ({ type: CLEAR_USER, user: null });
+export const logout = () => ({ type: LOGOUT, user: null });
