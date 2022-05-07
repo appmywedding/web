@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { baseURL } from '../../environment';
@@ -8,8 +8,8 @@ export default function SelectItem({ type }) {
 
     let dispatch = useDispatch();
     const items = useSelector((reducers) => {
-        
-    })
+        return reducers.items[type.toTypePlural(type)];
+    });
 
     useEffect(async () => {
         try {
@@ -17,9 +17,7 @@ export default function SelectItem({ type }) {
                 method: "get",
                 url: `${baseURL}/items/getAll/${type.toTypePlural(type)}`,
             });
-            debugger;
             dispatch(addItems(result.data, type.toTypePlural(type)));
-            console.log(result.data);
         } catch (error) {
             console.log(error);
         }
@@ -31,7 +29,7 @@ export default function SelectItem({ type }) {
             <div className='text-4xl space-y-1.5 mb-4'>
                 Select your {type.toTypeSingular(type)}:
             </div>
-            {items ? `items: ${items}` : 'no items'}
+            {items.length > 0 ? `items: ${items}` : 'no items'}
         </div>
     )
 }
