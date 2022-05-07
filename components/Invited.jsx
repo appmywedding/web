@@ -63,10 +63,10 @@ export default function Invited() {
 
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center h-full w-full'>
             <ShowAndLoad isLoading={getLoading}>
                 {invited ?
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center h-5/6 overflow-y-scroll m-5">
                         {invited.map((person) => {
                             return (
                                 <div className='p-2' key={person.id}>

@@ -37,7 +37,9 @@ export default function Home() {
                 <h1 className="mt-3 text-4xl cursor-pointer underline">
                     Your Invites
                 </h1>
+                <div className='h-5/6'>
                 <Invited />
+                </div>
             </div>
             <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectHall}>
                 Select your hall
@@ -50,7 +52,7 @@ export default function Home() {
             </div>
             {/* <Items /> */}
             <div className="absolute left-10 bottom-10 cursor-pointer" onClick={onLogout}>
-                Logout
+                {/* Logout */}
             </div>
         </div >
     )

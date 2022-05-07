@@ -8,7 +8,7 @@ export default function SelectItem({ type }) {
 
     let dispatch = useDispatch();
     const items = useSelector((reducers) => {
-        debugger;
+        
     })
 
     useEffect(async () => {
@@ -17,6 +17,7 @@ export default function SelectItem({ type }) {
                 method: "get",
                 url: `${baseURL}/items/getAll/${type.toTypePlural(type)}`,
             });
+            debugger;
             dispatch(addItems(result.data, type.toTypePlural(type)));
             console.log(result.data);
         } catch (error) {
