@@ -4,9 +4,9 @@ import axios from 'axios';
 import { baseURL } from '../environment';
 import * as actions from '../actions/items';
 import ShowAndLoad from './ShowAndLoad';
-import { Item } from '../components'
+import { Item } from '../components/Item'
 
-export default function Items() {
+export default function UserItems() {
     const [loadItems, setLoadItems] = useState(false);
 
     const items = useSelector((reducers) => reducers.items.items)

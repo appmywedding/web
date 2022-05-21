@@ -41,13 +41,13 @@ export default function Home() {
                 <Invited />
                 </div>
             </div>
-            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectHall}>
+            <div className='flex mx-4 cursor-pointer text-xl h-full' onClick={onSelectHall}>
                 Select your hall
             </div>
-            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectDress}>
+            <div className='flex mx-4 cursor-pointer text-xl h-full' onClick={onSelectDress}>
                 Select your dress
             </div>
-            <div className='flex mx-4 cursor-pointer text-xl' onClick={onSelectDJ}>
+            <div className='flex mx-4 cursor-pointer text-xl h-full' onClick={onSelectDJ}>
                 Select your dj
             </div>
             {/* <Items /> */}

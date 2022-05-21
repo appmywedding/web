@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Image from 'next/image';
 
 export default function Item({ title, description, imageUrl, price }) {
+    debugger;
     return (
         <div className='flex flex-col items-center p-4 nm-flat-white-100 rounded w-80 h-72'>
             <Image src={imageUrl} alt='Items image' width={200} height={150} placeholder='blur' blurDataURL={imageUrl} />

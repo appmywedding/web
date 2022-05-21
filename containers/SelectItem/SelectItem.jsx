@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { baseURL } from '../../environment';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItems } from '../../actions/items'
+import { addItems } from '../../actions/items';
+import { Item } from '../../components/Item';
+
 export default function SelectItem({ type }) {
 
     let dispatch = useDispatch();
@@ -29,7 +31,20 @@ export default function SelectItem({ type }) {
             <div className='text-4xl space-y-1.5 mb-4'>
                 Select your {type.toTypeSingular(type)}:
             </div>
-            {items.length > 0 ? `items: ${items}` : 'no items'}
+            {
+                items.length > 0 ?
+                    items.forEach(element => {
+                        const { title, description, imageUrl, price } = element
+                        return (
+                            <Item
+                                title={title}
+                                description={description}
+                                imageUrl={imageUrl}
+                                price={price} />
+                        )
+                    })
+                    : 'No items'
+            }
         </div>
     )
 }
