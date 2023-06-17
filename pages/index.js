@@ -1,12 +1,18 @@
-import Head from 'next/head'
-import React, { useEffect } from 'react';
-import Router from 'next/router';
+import Head from "next/head";
+import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import Router from "next/router";
 
-export default function Home(props) {
+export default function Home() {
+  const authState = useSelector((state) => state.auth);
 
   useEffect(() => {
-    Router.push('login');
-  })
+    if (authState.user) {
+      Router.push("admin");
+    } else {
+      Router.push("login");
+    }
+  }, [authState.user]);
 
   return (
     <Head>

@@ -44,3 +44,6 @@ app/src/main/res/raw/awsconfiguration.json
 .next/cache/webpack/client-development/1.pack
 .next/cache/webpack/client-development/0.pack
 .next/build-manifest.json
+
+#firebase
+*/firebase.js

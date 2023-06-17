@@ -80,7 +80,6 @@ const itemsReducer = (state = initialState, action) => {
                 dresses.push(action.items);
                 newState.dresses = dresses;
                 case 'halls': 
-                debugger;
                 let halls = [...state.halls];
                 halls = halls.concat(action.items);
                 newState.halls = halls;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from 'next/image'
 
 export default function ShowAndLoad({ children, isLoading, title }) {
 

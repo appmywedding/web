@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import { baseURL } from '../../environment';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,22 +32,13 @@ export default function SelectItem({ type }) {
             </div>
             {
                 items.length > 0 ?
-                    items.forEach(element => {
-                        const { title, description, imageUrl, price } = element
-                        return (
-                            <Item
-                                title={title}
-                                description={description}
-                                imageUrl={imageUrl}
-                                price={price} />
-                        )
-                    })
+                <Item
+                title={items[0].title}
+                description={items[0].description}
+                imageUrl={items[0].imageUrl}
+                price={items[0].price} />
                     : 'No items'
             }
         </div>
     )
-}
-
-SelectItem.propTypes = {
-    type: PropTypes.string,
 }
